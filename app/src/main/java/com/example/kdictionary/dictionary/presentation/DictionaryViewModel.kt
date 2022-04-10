@@ -4,17 +4,20 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.kdictionary.core.util.Resource
-import com.example.kdictionary.core.util.UIEvent
+import com.example.kdictionary.commons.utils.Resource
+import com.example.kdictionary.commons.utils.UIEvent
 import com.example.kdictionary.dictionary.domain.usescases.GetWordInfo
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
+import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class DictionaryViewModel @Inject constructor(
     private val getWordInfo: GetWordInfo
 ) : ViewModel() {
@@ -57,7 +60,7 @@ class DictionaryViewModel @Inject constructor(
                         )
                     }
                 }
-            }
+            }.launchIn(this)
         }
     }
 }
