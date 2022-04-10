@@ -13,7 +13,7 @@ data class WordDto(
         meanings = meanings.map { it.toMeaning() },
         origin = origin,
         phonetic = phonetic,
-        phonetics = phonetics.map { it.toPhonetic() },
+        phonetics = phonetics.map { it.toPhonetic()},
         word = word
     )
 }

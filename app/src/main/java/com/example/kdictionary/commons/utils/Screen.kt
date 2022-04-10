@@ -1,4 +1,4 @@
-package com.example.kdictionary.core.util
+package com.example.kdictionary.commons.utils
 
 sealed class Screen(val route: String) {
     object DictionaryScreen : Screen("dictionary_screen")
